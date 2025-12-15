@@ -45,19 +45,28 @@ int checkint(int* a)
 	}
 }
 
-string checkStr(string* str)
+string checkStr()
 {
+	string input;
 	while (1)
 	{
-		if (cin >> *str)
+		getline(cin, input); // getline 은 사용자가 enter를 입력할 때 까지 한줄 전체를 읽음 공백 예외처리 가능
+		//cin >> input; // cin을 사용하면 공백이나 탭을 입력받는 기준자로 정하기 때문에 예외처리가 불가능
+		bool has_Space = any_of(input.begin(), input.end(), [](unsigned char ch) {
+			return isspace(ch);
+			});
+		bool allIsAlpha = all_of(input.begin(), input.end(), [](unsigned char ch) {
+			return isalpha(static_cast<unsigned char>(ch));
+			});
+		if (allIsAlpha && !has_Space && !input.empty())
 		{
-			return *str;
+			return input;
 		}
 		else
 		{
 			cout << "올바른 문자를 입력하세요." << endl;
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			/*cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');*/
 		}
 	}
 }
@@ -126,7 +135,7 @@ int main()
 	Monster* monster = nullptr;
 
 	cout << "닉네임을 입력해주세요.";
-	nickname = checkStr(&nickname);
+	nickname = checkStr();
 
 	cout << "<전직 시스템>" << endl;
 	cout << nickname << " 님 환영합니다!" << endl;
