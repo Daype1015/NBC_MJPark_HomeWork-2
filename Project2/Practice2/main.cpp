@@ -1,4 +1,4 @@
-#include <limits>
+ï»¿#include <limits>
 #include <random>
 #include <ctime>
 
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-string vsMonster() // ·£´ıÇÑ 1~ 3 »çÀÌ¿¡ ·£´ıÇÑ ¼ö¸¦ »ı¼º ÇØ¼­ ÇØ´ç ½ºÆ®¸µ ¹İÈ¯
+string vsMonster() // ëœë¤í•œ 1~ 3 ì‚¬ì´ì— ëœë¤í•œ ìˆ˜ë¥¼ ìƒì„± í•´ì„œ í•´ë‹¹ ìŠ¤íŠ¸ë§ ë°˜í™˜
 {
 	mt19937 generator(static_cast<unsigned int>(time(nullptr)));
 	uniform_int_distribution<int> distribution(1, 3);
@@ -38,7 +38,7 @@ int checkint(int* a)
 		}
 		else
 		{
-			cout << "¿Ã¹Ù¸¥ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << endl;
+			cout << "ì˜¬ë°”ë¥¸ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”." << endl;
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
@@ -50,8 +50,8 @@ string checkStr()
 	string input;
 	while (1)
 	{
-		getline(cin, input); // getline Àº »ç¿ëÀÚ°¡ enter¸¦ ÀÔ·ÂÇÒ ¶§ ±îÁö ÇÑÁÙ ÀüÃ¼¸¦ ÀĞÀ½ °ø¹é ¿¹¿ÜÃ³¸® °¡´É
-		//cin >> input; // cinÀ» »ç¿ëÇÏ¸é °ø¹éÀÌ³ª ÅÇÀ» ÀÔ·Â¹Ş´Â ±âÁØÀÚ·Î Á¤ÇÏ±â ¶§¹®¿¡ ¿¹¿ÜÃ³¸®°¡ ºÒ°¡´É
+		getline(cin, input); // getline ì€ ì‚¬ìš©ìê°€ enterë¥¼ ì…ë ¥í•  ë•Œ ê¹Œì§€ í•œì¤„ ì „ì²´ë¥¼ ì½ìŒ ê³µë°± ì˜ˆì™¸ì²˜ë¦¬ ê°€ëŠ¥
+		//cin >> input; // cinì„ ì‚¬ìš©í•˜ë©´ ê³µë°±ì´ë‚˜ íƒ­ì„ ì…ë ¥ë°›ëŠ” ê¸°ì¤€ìë¡œ ì •í•˜ê¸° ë•Œë¬¸ì— ì˜ˆì™¸ì²˜ë¦¬ê°€ ë¶ˆê°€ëŠ¥
 		bool has_Space = any_of(input.begin(), input.end(), [](unsigned char ch) {
 			return isspace(ch);
 			});
@@ -64,7 +64,7 @@ string checkStr()
 		}
 		else
 		{
-			cout << "¿Ã¹Ù¸¥ ¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << endl;
+			cout << "ì˜¬ë°”ë¥¸ ë¬¸ìë¥¼ ì…ë ¥í•˜ì„¸ìš”." << endl;
 			/*cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');*/
 		}
@@ -79,12 +79,12 @@ void battleMonster(Player* player, Monster* monster, int* run)
 	bool hasBuff = false;
 	while (1)
 	{
-		cout << "¼öÇàÇÒ µ¿ÀÛÀ» ¼±ÅÃÇÏ¼¼¿ä." << endl;
-		cout << "1) °ø°İ! " << endl;
-		cout << "2) ¹æ¾î! " << endl;
-		cout << "3) °­È­! " << endl;
-		cout << "4) ÀüÅõ »óÅÂ È®ÀÎ! " << endl;
-		cout << "5) µµ¸Á! " << endl;
+		cout << "ìˆ˜í–‰í•  ë™ì‘ì„ ì„ íƒí•˜ì„¸ìš”." << endl;
+		cout << "1) ê³µê²©! " << endl;
+		cout << "2) ë°©ì–´! " << endl;
+		cout << "3) ê°•í™”! " << endl;
+		cout << "4) ì „íˆ¬ ìƒíƒœ í™•ì¸! " << endl;
+		cout << "5) ë„ë§! " << endl;
 		switch (checkint(&player_Behaivior))
 		{
 		case 1: 
@@ -113,11 +113,11 @@ void battleMonster(Player* player, Monster* monster, int* run)
 		case 4: player->printPlayerStatus();
 				monster->printMonsterStatus();
 			break;
-		case 5: cout << "Æ¢¾î~~~~ÀÕ!!" << endl;
+		case 5: cout << "íŠ€ì–´~~~~ì‡!!" << endl;
 				*run = 1;
 				return;
 		default:
-			cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+			cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤." << endl;
 			break;
 		}
 	}
@@ -125,7 +125,7 @@ void battleMonster(Player* player, Monster* monster, int* run)
 
 int main()
 {
-	string jobs[] = { "Àü»ç", "¸¶¹ı»ç", "µµÀû", "±Ã¼ö" };
+	string jobs[] = { "ì „ì‚¬", "ë§ˆë²•ì‚¬", "ë„ì ", "ê¶ìˆ˜" };
 	int job_choice = 0;
 	int behaivior_Choice = 0;
 	int runaway;
@@ -134,12 +134,12 @@ int main()
 	Player* player = nullptr;
 	Monster* monster = nullptr;
 
-	cout << "´Ğ³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.";
+	cout << "ë‹‰ë„¤ì„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.";
 	nickname = checkStr();
 
-	cout << "<ÀüÁ÷ ½Ã½ºÅÛ>" << endl;
-	cout << nickname << " ´Ô È¯¿µÇÕ´Ï´Ù!" << endl;
-	cout << "* ¿øÇÏ½Ã´Â ÀÛ¾÷À» ¼±ÅÃÇØÁÖ¼¼¿ä." << endl;
+	cout << "<ì „ì§ ì‹œìŠ¤í…œ>" << endl;
+	cout << nickname << " ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤!" << endl;
+	cout << "* ì›í•˜ì‹œëŠ” ì‘ì—…ì„ ì„ íƒí•´ì£¼ì„¸ìš”." << endl;
 
 	start_of_Input:
 	for (int i = 0; i < 4; i++)
@@ -147,7 +147,7 @@ int main()
 		cout << (i + 1) << ". " << jobs[i] << endl;
 	}
 
-	cout << "¼±ÅÃ : ";
+	cout << "ì„ íƒ : ";
 	job_choice = checkint(&job_choice);
 
 	switch (job_choice)
@@ -165,17 +165,17 @@ int main()
 		player = new Archer(nickname);
 		break;
 	default:
-		cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+		cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤." << endl;
 		goto start_of_Input;
 	}
 
 	start_of_game:
 	player->printPlayerStatus();
 	cout << "========================" << endl;
-	cout << "µ¿ÀÛÀ» ¼±ÅÃÇÏ¼¼¿ä." << endl;
-	cout << "1) ÀüÅõ" << endl;
-	cout << "2) ³» Á¤º¸ Á¶È¸" << endl;
-	cout << "3) Á¾·á" << endl;
+	cout << "ë™ì‘ì„ ì„ íƒí•˜ì„¸ìš”." << endl;
+	cout << "1) ì „íˆ¬" << endl;
+	cout << "2) ë‚´ ì •ë³´ ì¡°íšŒ" << endl;
+	cout << "3) ì¢…ë£Œ" << endl;
 	cout << "========================" << endl;
 	behaivior_Choice = checkint(&behaivior_Choice);
 
